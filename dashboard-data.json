@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20 09:53 UTC",
+  "updated_at": "2026-07-20 12:11 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -22,11 +22,8 @@
       }
     },
     "substack": {
-      "status": "success",
-      "data": {
-        "title": "📚 Substack",
-        "status_text": "لا توجد منشورات جديدة"
-      }
+      "status": "error",
+      "message": "Substack profile not found"
     },
     "youtube": {
       "status": "success",

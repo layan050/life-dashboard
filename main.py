@@ -14,16 +14,16 @@ def build_dashboard():
     CHESS_USERNAME = "laayyyaann"
     GITHUB_USERNAME = "layan050"
     
-    # رابط RSS الخاص بنشرتك في Substack (استبدل layann77 برابط منشوراتك إذا كان مختلفاً)
-    SUBSTACK_FEED = "https://layann77.substack.com/feed" 
+    # اسم مستخدم Substack (بدون رابط وبدون @)
+    SUBSTACK_USERNAME = "layann77"  # 👈 تأكدي أن هذا هو يوزر حسابك في سبستاك
     
     YOUTUBE_CHANNEL_ID = "UCAhqkGAhblH3i99fFSCFzDA"
 
-    # تسجيل الإضافات الفعالة فقط (تمت إزالة Raindrop بالكامل)
+    # تسجيل الإضافات الفعالة
     plugins = [
         ChessPlugin(CHESS_USERNAME),
         GithubPlugin(GITHUB_USERNAME),
-        SubstackPlugin(SUBSTACK_FEED),
+        SubstackPlugin(SUBSTACK_USERNAME),
         YoutubePlugin(YOUTUBE_CHANNEL_ID),
         ManualPlugin("data/manual_data.json")
     ]
