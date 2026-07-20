@@ -1,0 +1,54 @@
+{
+  "updated_at": "2026-07-20 09:53 UTC",
+  "widgets": {
+    "chess": {
+      "status": "success",
+      "data": {
+        "title": "♟️ Chess.com",
+        "type": "game",
+        "category": "ألعب الآن",
+        "rating": "Rapid 917",
+        "status_text": "لا توجد مباريات حديثة",
+        "link": "https://www.chess.com/member/laayyyaann"
+      }
+    },
+    "github": {
+      "status": "success",
+      "data": {
+        "title": "💻 GitHub",
+        "category": "النشاط البرمجي",
+        "status_text": "نشاط (PushEvent) في layan050/life-dashboard",
+        "link": "https://github.com/layan050/life-dashboard"
+      }
+    },
+    "substack": {
+      "status": "success",
+      "data": {
+        "title": "📚 Substack",
+        "status_text": "لا توجد منشورات جديدة"
+      }
+    },
+    "youtube": {
+      "status": "success",
+      "data": {
+        "title": "🎥 YouTube",
+        "status_text": "لا توجد فيديوهات"
+      }
+    },
+    "manual": {
+      "status": "success",
+      "data": {
+        "nadim": {
+          "title": "📖 أقرأ في نديم",
+          "book_name": "بناء العقل الثاني (Tiago Forte)",
+          "progress": "الصفحة 142 من 300"
+        },
+        "refract": {
+          "title": "🎬 أشاهد الآن",
+          "show_name": "The Bear",
+          "episode": "S02E04"
+        }
+      }
+    }
+  }
+}
