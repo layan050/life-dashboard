@@ -2,29 +2,29 @@ import json
 import os
 from datetime import datetime
 
-# استيراد الـ Plugins
+# استيراد الـ Plugins المتاحة والفعالة
 from plugins.chess import ChessPlugin
-from plugins.raindrop import RaindropPlugin
 from plugins.substack import SubstackPlugin
 from plugins.youtube import YoutubePlugin
 from plugins.github_activity import GithubPlugin
 from plugins.manual_override import ManualPlugin
 
 def build_dashboard():
-    # --- ضبط الإعدادات وحساباتك هنا ---
-    CHESS_USERNAME = "YourChessUsername"
-    GITHUB_USERNAME = "YourGithubUsername"
-    SUBSTACK_FEED = "https://yourblog.substack.com/feed"
-    YOUTUBE_CHANNEL_ID = "UCxxxxxxxxxxxx"  # ضع Channel ID لقناتك أو قناتك المفضل
-    RAINDROP_TOKEN = os.getenv("RAINDROP_TOKEN", "") # يُجلب من خيارات الأمان في GitHub
+    # --- ضبط الإعدادات وحساباتك ---
+    CHESS_USERNAME = "laayyyaann"
+    GITHUB_USERNAME = "layan050"
+    
+    # رابط RSS الخاص بنشرتك في Substack (استبدل layann77 برابط منشوراتك إذا كان مختلفاً)
+    SUBSTACK_FEED = "https://layann77.substack.com/feed" 
+    
+    YOUTUBE_CHANNEL_ID = "UCAhqkGAhblH3i99fFSCFzDA"
 
-    # تسجيل جميع الإضافات
+    # تسجيل الإضافات الفعالة فقط (تمت إزالة Raindrop بالكامل)
     plugins = [
         ChessPlugin(CHESS_USERNAME),
         GithubPlugin(GITHUB_USERNAME),
         SubstackPlugin(SUBSTACK_FEED),
         YoutubePlugin(YOUTUBE_CHANNEL_ID),
-        RaindropPlugin(RAINDROP_TOKEN),
         ManualPlugin("data/manual_data.json")
     ]
 
