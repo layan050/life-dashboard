@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23 08:19 UTC",
+  "updated_at": "2026-07-23 11:04 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -7,7 +7,7 @@
         "title": "♟️ Chess.com",
         "type": "game",
         "category": "ألعب الآن",
-        "rating": "Rapid 939",
+        "rating": "Rapid 931",
         "status_text": "لا توجد مباريات حديثة",
         "link": "https://www.chess.com/member/laayyyaann"
       }
