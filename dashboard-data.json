@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-17 23:16 UTC",
+  "updated_at": "2026-08-18 00:51 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -16,9 +16,7 @@
       "status": "success",
       "data": {
         "title": "💻 GitHub",
-        "category": "النشاط البرمجي",
-        "status_text": "نشاط (PushEvent) في layan050/life-dashboard",
-        "link": "https://github.com/layan050/life-dashboard"
+        "status_text": "لا يوجد نشاط برمي حديث"
       }
     },
     "substack": {
