@@ -1,10 +1,16 @@
 {
-  "updated_at": "2026-08-25 13:42 UTC",
+  "updated_at": "2026-08-25 14:37 UTC",
   "widgets": {
     "chess": {
-      "status": "error",
-      "error": "HTTPSConnectionPool(host='api.chess.com', port=443): Read timed out. (read timeout=10)",
-      "data": null
+      "status": "success",
+      "data": {
+        "title": "♟️ Chess.com",
+        "type": "game",
+        "category": "ألعب الآن",
+        "rating": "Rapid 1006",
+        "status_text": "لا توجد مباريات حديثة",
+        "link": "https://www.chess.com/member/laayyyaann"
+      }
     },
     "github": {
       "status": "success",
