@@ -1,13 +1,6 @@
 name: Update activity
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'book.json'
-      - 'config.json'
-      - 'scripts/update-activity.mjs'
-      - '.github/workflows/update-activity.yml'
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
