@@ -1,0 +1,1362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' expr:dir='data:blog.languageDirection' lang='ar' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <meta charset='utf-8'/>
+  <meta content='مدونة لayan: تدوينات شخصية ونشاطاتي الأخيرة.' name='description'/>
+  <meta content='دفتر لينو' property='og:title'/>
+  <meta content='مدونة لayan: تدوينات شخصية ونشاطاتي الأخيرة.' property='og:description'/>
+  <meta content='website' property='og:type'/>
+  
+  <title><data:view.title.escaped/></title>
+  
+  <b:include data='blog' name='all-head-content'/>
+  
+  <!-- Google Fonts (Cairo & Space Mono) -->
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap' rel='stylesheet'/>
+  
+  <!-- FontAwesome -->
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+
+  <!-- CSS (Brutalist Digital Garden Style v2) -->
+  <b:skin><![CDATA[
+  :root {
+    --bg-body: #eaddcf;
+    --bg-card: #fdf5e6;
+    --yellow: #fce154;
+    --orange: #f16529;
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --font-ar: 'Cairo', sans-serif;
+    --font-num: 'Space Mono', monospace;
+    --border: 2px solid #1a1a1a;
+    --shadow: 4px 4px 0px #1a1a1a;
+    --shadow-hover: 6px 6px 0px #1a1a1a;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg-body);
+    color: var(--black);
+    font-family: var(--font-ar);
+    line-height: 1.6;
+    overflow-x: hidden;
+    direction: rtl;
+    text-align: right;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* شريط التقدم العلوي الديناميكي */
+  #pjax-progress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--orange);
+    width: 0%;
+    transition: width 0.25s ease-in-out;
+    z-index: 9999;
+  }
+
+  .layout-wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar (اليمين) */
+  .sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 70px;
+    height: 100vh;
+    background-color: var(--bg-card);
+    border-left: var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    z-index: 1000;
+  }
+
+  .sidebar-logo {
+    width: 44px;
+    height: 44px;
+    background-color: var(--orange);
+    border: var(--border);
+    box-shadow: 2px 2px 0px var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    border-radius: 4px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    width: 52px;
+    height: 52px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+
+  .nav-link i {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  .nav-link:hover {
+    color: var(--orange);
+    transform: scale(1.05);
+  }
+
+  .nav-link.active {
+    background-color: var(--yellow) !important;
+    color: var(--black) !important;
+    border: var(--border) !important;
+    box-shadow: 2px 2px 0px var(--black) !important;
+  }
+
+  /* Main Content Area */
+  .main-content {
+    margin-right: 70px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 70px);
+  }
+
+  .container {
+    padding: 30px 40px;
+    max-width: 1150px;
+    margin: 0 auto;
+    width: 100%;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .container.loading {
+    opacity: 0.3;
+    transform: translateY(8px);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background-color: var(--bg-card);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .hero-intro {
+    flex: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background-color: var(--yellow);
+    border: var(--border);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 2px 2px 0px var(--black);
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+
+  /* Life Dashboard Card */
+  .dashboard-single-card {
+    width: 360px;
+    background-color: var(--white);
+    border: var(--border);
+    box-shadow: 3px 3px 0px var(--black);
+    padding: 16px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dash-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+
+  .dash-card-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dash-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dash-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #1a1a1a;
+  }
+
+  .dash-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .dash-right-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dash-icon {
+    color: var(--orange);
+    font-size: 15px;
+    width: 18px;
+    text-align: center;
+  }
+
+  /* زر الرابط بالسهم وبدون خط أسفل النص */
+  .dash-account-link {
+    color: var(--black);
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+
+  .dash-account-link:hover {
+    color: var(--orange);
+  }
+
+  .dash-account-link i {
+    font-size: 11px;
+    color: var(--orange);
+    transition: transform 0.2s;
+  }
+
+  .dash-account-link:hover i {
+    transform: translate(-2px, -2px);
+  }
+
+  .dash-badge-sm {
+    background-color: var(--yellow);
+    border: 1.5px solid var(--black);
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    box-shadow: 2px 2px 0px var(--black);
+    display: inline-block;
+    color: var(--black);
+    font-family: var(--font-num), var(--font-ar);
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .dash-badge-sm:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--black);
+  }
+
+  /* Action Bar */
+  .action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 6px 14px;
+    border: var(--border);
+    box-shadow: 3px 3px 0px var(--black);
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 3px;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hover);
+    background-color: var(--yellow) !important;
+  }
+
+  .compact-search {
+    display: flex;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .compact-search input {
+    flex: 1;
+    padding: 6px 12px;
+    border: var(--border);
+    border-left: none;
+    background-color: var(--white);
+    font-family: var(--font-ar);
+    font-size: 13px;
+    outline: none;
+    font-weight: 600;
+  }
+
+  .compact-search button {
+    background-color: var(--black);
+    color: var(--yellow);
+    border: var(--border);
+    padding: 0 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .compact-search button:hover {
+    background-color: var(--orange);
+    color: var(--white);
+  }
+
+  /* Posts Grid */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .post-card {
+    background-color: var(--bg-card);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+    border-radius: 4px;
+  }
+
+  .post-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-hover);
+    background-color: #fff8eb;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .card-label {
+    background-color: var(--yellow);
+    border: var(--border);
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 800;
+    box-shadow: 2px 2px 0px var(--black);
+  }
+
+  .card-date {
+    font-family: var(--font-num);
+    font-size: 12px;
+    color: #555;
+    font-weight: 700;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .notebook-checkbox {
+    color: var(--orange);
+    margin-left: 6px;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .card-snippet {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    line-height: 1.6;
+  }
+
+  .read-more {
+    align-self: flex-start;
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 6px 15px;
+    border: var(--border);
+    box-shadow: 3px 3px 0px var(--black);
+    font-weight: 700;
+    font-size: 13px;
+    transition: all 0.2s;
+    border-radius: 3px;
+  }
+
+  .read-more:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hover);
+    background-color: var(--yellow);
+    color: var(--black);
+  }
+
+  /* Single Post Page */
+  .post-detail-container {
+    background-color: var(--bg-card);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 40px;
+    border-radius: 4px;
+  }
+
+  .post-detail-title {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+
+  .post-detail-date {
+    display: inline-block;
+    font-family: var(--font-num);
+    background-color: var(--yellow);
+    border: var(--border);
+    padding: 4px 12px;
+    font-weight: 700;
+    box-shadow: 2px 2px 0px var(--black);
+    margin-bottom: 30px;
+  }
+
+  .post-body { font-size: 17px; line-height: 1.8; }
+  .post-body p { margin-bottom: 20px; }
+  .post-body h2, .post-body h3 { font-weight: 900; margin: 30px 0 15px 0; }
+
+  /* Pagination */
+  .blog-pager {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  .blog-pager a {
+    background-color: var(--white);
+    padding: 8px 18px;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+
+  .blog-pager a:hover {
+    background-color: var(--yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Responsive Mobile/Tablet Breakpoint */
+  @media (max-width: 850px) {
+    .sidebar {
+      position: fixed;
+      right: 0;
+      left: 0;
+      top: auto;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      flex-direction: row;
+      justify-content: space-around;
+      border-left: none;
+      border-top: var(--border);
+      padding: 0;
+      background-color: var(--bg-card);
+    }
+
+    .sidebar-logo { display: none; }
+
+    .nav-links {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .nav-link { 
+      font-size: 10px; 
+      width: auto; 
+      height: auto; 
+      border: none; 
+      padding: 4px 8px; 
+    }
+
+    .main-content {
+      margin-right: 0;
+      margin-bottom: 70px;
+      width: 100%;
+    }
+
+    .container { padding: 20px; }
+    .hero-section { flex-direction: column-reverse; align-items: stretch; }
+    .dashboard-single-card { width: 100%; }
+    .action-bar { flex-direction: column-reverse; align-items: stretch; }
+    .compact-search { max-width: 100%; }
+    .posts-grid { grid-template-columns: 1fr; }
+  }
+
+  /* إصلاحات إضافية: تلاصق الكروت + الخط العريض بالملاحظة */
+  .card-snippet,
+  .card-snippet * {
+    font-weight: 400 !important;
+  }
+
+  .posts-grid {
+    gap: 25px !important;
+  }
+
+  .post-card {
+    margin: 0 !important;
+  }
+
+  @media (max-width: 850px) {
+    .posts-grid {
+      gap: 20px !important;
+    }
+  }
+  ]]></b:skin>
+
+</head>
+
+<body>
+  <!-- شريط التقدم العلوي -->
+  <div id='pjax-progress'/>
+
+  <div class='layout-wrapper'>
+    
+    <!-- Sidebar / Navigation -->
+    <aside class='sidebar'>
+      <div class='sidebar-logo'>
+        <i class='fas fa-layer-group'/>
+      </div>
+      <nav class='nav-links'>
+        <a class='nav-link' href='/'>
+          <i class='fas fa-home'/>
+          <span>الرئيسية</span>
+        </a>
+        <a class='nav-link' href='/search/label/تعلمت'>
+          <i class='fas fa-lightbulb'/>
+          <span>تعلمت</span>
+        </a>
+        <a class='nav-link' href='/search/label/جربت'>
+          <i class='fas fa-flask'/>
+          <span>جربت</span>
+        </a>
+        <a class='nav-link' href='/search/label/أصلحت'>
+          <i class='fas fa-wrench'/>
+          <span>أصلحت</span>
+        </a>
+        <a class='nav-link' href='/search/label/قرأت'>
+          <i class='fas fa-book'/>
+          <span>قرأت</span>
+        </a>
+        <a class='nav-link' href='/search/label/على الرف'>
+          <i class='fas fa-bookmark'/>
+          <span>على الرف</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class='main-content'>
+      <div class='container' id='main-container'>
+        
+        <b:section id='main-section' showaddelement='yes'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+              <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+              <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+              <b:widget-setting name='showAuthor'>false</b:widget-setting>
+              <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+              <b:widget-setting name='timestampLabel'/>
+              <b:widget-setting name='reactionsLabel'/>
+              <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+              <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+              <b:widget-setting name='showLabels'>true</b:widget-setting>
+              <b:widget-setting name='showLocation'>true</b:widget-setting>
+              <b:widget-setting name='postLabelsLabel'/>
+              <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+              <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+              <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+              <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+              <b:widget-setting name='showReactions'>false</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main' var='top'>
+              <b:if cond='data:view.isMultipleItems'>
+                
+                <!-- Hero Section -->
+                <div class='hero-section'>
+                  <div class='hero-intro'>
+                    <div class='hero-badge'>_&gt; عساس دفتر</div>
+                    <h1 class='hero-title'>دفتر لينو</h1>
+                    <p class='hero-desc'>شخص عادي يكتب اي شيء.</p>
+                  </div>
+                  
+                  <div class='dashboard-single-card'>
+                    <div class='dash-card-header'>
+                      <span class='dash-card-title'><i class='fas fa-bolt'/> نشاطاتي الأخيرة</span>
+                    </div>
+                    <div class='dash-items-wrapper' id='dashboard-items-wrapper'>
+                      <div class='dash-row'>
+                        <span class='dash-icon'><i class='fas fa-sync fa-spin'/></span>
+                        <span class='dash-text'>جاري جلب البيانات...</span>
+                      </div>
+                    </div>
+                    <small class='dash-updated-at' id='dashboard-updated-at'></small>
+                  </div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class='action-bar'>
+                  <div class='filters'>
+                    <a class='filter-btn' href='/'>الكل</a>
+                    <a class='filter-btn' href='/search/label/تعلمت'>تعلمت</a>
+                    <a class='filter-btn' href='/search/label/جربت'>جربت</a>
+                    <a class='filter-btn' href='/search/label/أصلحت'>أصلحت</a>
+                    <a class='filter-btn' href='/search/label/قرأت'>قرأت</a>
+                    <a class='filter-btn' href='/search/label/على الرف'>على الرف</a>
+                  </div>
+
+                  <form action='/search' class='compact-search' method='get'>
+                    <input name='q' placeholder='ابحث ...' required='' type='text'/>
+                    <button type='submit'><i class='fas fa-search'/></button>
+                  </form>
+                </div>
+
+                <!-- Posts Grid -->
+                <div class='posts-grid'>
+                  <b:loop values='data:posts' var='post'>
+                    <b:include data='post' name='post_card'/>
+                  </b:loop>
+                </div>
+                
+                <b:include name='nextprev'/>
+
+              <b:else/>
+                <b:loop values='data:posts' var='post'>
+                  <b:include data='post' name='post_detail'/>
+                </b:loop>
+              </b:if>
+            </b:includable>
+            <b:includable id='aboutPostAuthor'>
+  <div class='author-name'>
+    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+      <span>
+        <data:post.author.name/>
+      </span>
+    </a>
+  </div>
+  <div>
+    <span class='author-desc'>
+      <data:post.author.aboutMe/>
+    </span>
+  </div>
+</b:includable>
+            <b:includable id='addComments'>
+  <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
+    <b:message name='messages.postAComment'/>
+  </a>
+</b:includable>
+            <b:includable id='commentAuthorAvatar'>
+  <div class='avatar-image-container'>
+    <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+  </div>
+</b:includable>
+            <b:includable id='commentDeleteIcon' var='comment'>
+  <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+    <b:if cond='data:showCmtPopup'>
+      <div class='goog-toggle-button'>
+        <div class='goog-inline-block comment-action-icon'/>
+      </div>
+    <b:else/>
+      <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment'>
+        <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+      </a>
+    </b:if>
+  </span>
+</b:includable>
+            <b:includable id='commentForm' var='post'>
+              <div class='comment-form'>
+                <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+                <data:post.cmtfpIframe/>
+              </div>
+            </b:includable>
+            <b:includable id='commentFormIframeSrc' var='post'>
+  <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+</b:includable>
+            <b:includable id='commentItem' var='comment'>
+  <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
+    <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
+
+    <div class='comment-block'>
+      <div class='comment-author'>
+        <b:if cond='data:comment.authorUrl'>
+          <b:message name='messages.authorSaidWithLink'>
+            <b:param expr:value='data:comment.author' name='authorName'/>
+            <b:param expr:value='data:comment.authorUrl' name='authorUrl'/>
+          </b:message>
+        <b:else/>
+          <b:message name='messages.authorSaid'>
+            <b:param expr:value='data:comment.author' name='authorName'/>
+          </b:message>
+        </b:if>
+      </div>
+      <div expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
+        <data:comment.body/>
+      </div>
+      <div class='comment-footer'>
+        <span class='comment-timestamp'>
+          <a expr:href='data:comment.url' title='comment permalink'>
+            <data:comment.timestamp/>
+          </a>
+          <b:include data='comment' name='commentDeleteIcon'/>
+        </span>
+      </div>
+    </div>
+  </div>
+</b:includable>
+            <b:includable id='commentList' var='comments'>
+  <div id='comments-block'>
+    <b:loop values='data:comments' var='comment'>
+      <b:include data='comment' name='commentItem'/>
+    </b:loop>
+  </div>
+</b:includable>
+            <b:includable id='commentPicker' var='post'>
+  <b:if cond='data:post.showThreadedComments'>
+    <b:include data='post' name='threadedComments'/>
+  <b:else/>
+    <b:include data='post' name='comments'/>
+  </b:if>
+</b:includable>
+            <b:includable id='comments' var='post'>
+              <section class='comments' id='comments'>
+                <h3 style='font-weight: 900; margin-bottom: 20px; font-size: 24px;'>التعليقات والمناقشات</h3>
+                <b:if cond='data:post.embedCommentForm'>
+                  <b:include data='post' name='commentForm'/>
+                </b:if>
+              </section>
+            </b:includable>
+            <b:includable id='commentsTitle'>
+  <h3 class='title'><data:messages.comments/></h3>
+</b:includable>
+            <b:includable id='feedLinks'>
+  <b:if cond='!data:view.isPost'> <!-- Blog feed links -->
+    <b:if cond='data:feedLinks'>
+      <div class='blog-feeds'>
+        <b:include data='feedLinks' name='feedLinksBody'/>
+      </div>
+    </b:if>
+  <b:else/> <!--Post feed links -->
+    <div class='post-feeds'>
+      <b:loop values='data:posts' var='post'>
+        <b:if cond='data:post.allowComments and data:post.feedLinks'>
+          <b:include data='post.feedLinks' name='feedLinksBody'/>
+        </b:if>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+            <b:includable id='feedLinksBody' var='links'>
+  <div class='feed-links'>
+  <data:messages.subscribeTo/>
+  <b:loop values='data:links' var='f'>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+  </b:loop>
+  </div>
+</b:includable>
+            <b:includable id='homePageLink'>
+  <a class='home-link' expr:href='data:blog.homepageUrl'>
+    <data:messages.home/>
+  </a>
+</b:includable>
+            <b:includable id='iframeComments' var='post'>
+  <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
+</b:includable>
+            <b:includable id='inlineAd' var='post'>
+  <b:if cond='!data:view.isPreview'>
+    <b:if cond='data:this.adCode or data:this.adClientId or data:blog.adsenseClientId'>
+      <!-- Ad -->
+      <div class='inline-ad'>
+        <b:if cond='data:this.adCode != &quot;&quot;'>
+          <data:this.adCode/>
+        <b:else/>
+          <b:include cond='data:this.adClientId or data:blog.adsenseClientId' name='defaultAdUnit'/>
+        </b:if>
+      </div>
+    </b:if>
+  <b:else/>
+    <div class='inline-ad'>
+      <div class='inline-ad-placeholder'>
+        <span><b:message name='messages.adsGoHere'/></span>
+      </div>
+    </div>
+  </b:if>
+</b:includable>
+            <b:includable id='nextPageLink'>
+  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
+    <data:messages.olderPosts/>
+  </a>
+</b:includable>
+            <b:includable id='nextprev'>
+              <div class='blog-pager'>
+                <b:if cond='data:newerPageUrl'>
+                  <a expr:href='data:newerPageUrl'><i class='fas fa-arrow-right'/> الأحدث</a>
+                <b:else/>
+                  <span/>
+                </b:if>
+                <b:if cond='data:olderPageUrl'>
+                  <a expr:href='data:olderPageUrl'>الأقدم <i class='fas fa-arrow-left'/></a>
+                <b:else/>
+                  <span/>
+                </b:if>
+              </div>
+            </b:includable>
+            <b:includable id='post' var='post'>
+  <div class='post'>
+    <b:include data='post' name='postMeta'/>
+    <b:include data='post' name='postTitle'/>
+    <b:include name='headerByline'/>
+    <b:if cond='data:view.isSingleItem'>
+      <b:include data='post' name='postBody'/>
+    <b:else/>
+      <b:include data='post' name='postBodySnippet'/>
+      <b:include data='post' name='postJumpLink'/>
+    </b:if>
+    <b:include data='post' name='postFooter'/>
+  </div>
+</b:includable>
+            <b:includable id='postBody' var='post'>
+  <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
+  <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+    <data:post.body/>
+  </div>
+</b:includable>
+            <b:includable id='postBodySnippet' var='post'>
+  <b:include data='post' name='postBody'/>
+</b:includable>
+            <b:includable id='postCommentsAndAd' var='post'>
+  <article class='post-outer-container'>
+    <!-- Post title and body -->
+    <div class='post-outer'>
+      <b:include data='post' name='post'/>
+    </div>
+
+    <!-- Comments -->
+    <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
+
+    <!-- Show ad inside post container, after comments, if single item. -->
+    <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+  </article>
+
+  <!-- Show ad outside post container (between posts) for feed pages. -->
+  <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+</b:includable>
+            <b:includable id='postCommentsLink'>
+  <b:if cond='data:view.isMultipleItems'>
+    <span class='byline post-comment-link container'>
+      <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
+    </span>
+  </b:if>
+</b:includable>
+            <b:includable id='postFooter' var='post'>
+  <div class='post-footer'>
+    <b:include name='footerBylines'/>
+    <b:include data='post' name='postFooterAuthorProfile'/>
+  </div>
+</b:includable>
+            <b:includable id='postFooterAuthorProfile' var='post'>
+  <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+    <div class='author-profile'>
+      <b:if cond='data:post.author.authorPhoto.url'>
+        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+        <div class='author-about'>
+          <b:include data='post' name='aboutPostAuthor'/>
+        </div>
+      <b:else/>
+        <b:include data='post' name='aboutPostAuthor'/>
+      </b:if>
+    </div>
+  </b:if>
+</b:includable>
+            <b:includable id='postHeader' var='post'>
+  <b:include name='headerByline'/>
+</b:includable>
+            <b:includable id='postMeta' var='post'>
+  <b:include data='post' name='postMetadataJSON'/>
+</b:includable>
+            <b:includable id='postPagination'>
+  <div class='blog-pager container' id='blog-pager'>
+    <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+    <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+    <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+  </div>
+</b:includable>
+            <b:includable id='postTitle' var='post'>
+  <a expr:name='data:post.id'/>
+  <b:if cond='data:post.title != &quot;&quot;'>
+    <h3 class='post-title entry-title'>
+      <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
+        <a expr:href='data:post.link ?: data:post.url'><data:post.title/></a>
+      <b:else/>
+        <data:post.title/>
+      </b:if>
+    </h3>
+  </b:if>
+</b:includable>
+            <b:includable id='post_card' var='post'>
+              <div class='post-card'>
+                <div class='card-top'>
+                  <b:if cond='data:post.labels'>
+                    <span class='card-label'><data:post.labels.first.name/></span>
+                  <b:else/>
+                    <span class='card-label'>ملاحظة</span>
+                  </b:if>
+                  <span class='card-date'><data:post.date/></span>
+                </div>
+                
+                <h2 class='card-title'>
+                  <a expr:href='data:post.url'>
+                    <span class='notebook-checkbox'>&#9633;</span>
+                    <data:post.title/>
+                  </a>
+                </h2>
+                
+                <div class='card-snippet'>
+                  <b:eval expr='data:post.snippet ? data:post.snippet : snippet(data:post.body, { length: 120, links: false })'/>
+                </div>
+                
+                <a class='read-more' expr:href='data:post.url'>قراءة الملاحظة &#8592;</a>
+              </div>
+            </b:includable>
+            <b:includable id='post_detail' var='post'>
+              <article class='post-detail-container'>
+                <h1 class='post-detail-title'><data:post.title/></h1>
+                <div class='post-detail-date'><i class='far fa-calendar-alt'/> <data:post.date/></div>
+                <div class='post-body'>
+                  <data:post.body/>
+                </div>
+                
+                <div style='margin-top: 40px; border-top: 2px solid #1a1a1a; padding-top: 20px;'>
+                  <b:include cond='data:post.allowComments' data='post' name='comments'/>
+                </div>
+              </article>
+            </b:includable>
+            <b:includable id='previousPageLink'>
+  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
+    <data:messages.newerPosts/>
+  </a>
+</b:includable>
+            <b:includable id='threadedCommentForm' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+    <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+      <p><data:this.messages.blogComment/></p>
+    </b:if>
+    <b:include data='post' name='commentFormIframeSrc'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+            <b:includable id='threadedCommentJs' var='post'>
+  <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
+  <b:template-script inline='true' name='threaded_comments'/>
+  <script type='text/javascript'>
+    blogger.widgets.blog.initThreadedComments(
+        <data:post.commentJso/>,
+        <data:post.commentMsgs/>,
+        <data:post.commentConfig/>);
+  </script>
+</b:includable>
+            <b:includable id='threadedComments' var='post'>
+  <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+    <a name='comments'/>
+
+    <b:include name='commentsTitle'/>
+
+    <div class='comments-content'>
+      <b:if cond='data:post.embedCommentForm'>
+        <b:include data='post' name='threadedCommentJs'/>
+      </b:if>
+      <div id='comment-holder'>
+         <data:post.commentHtml/>
+      </div>
+    </div>
+
+    <p class='comment-footer'>
+      <b:if cond='data:post.allowNewComments'>
+        <b:include data='post' name='threadedCommentForm'/>
+      <b:else/>
+        <data:post.noNewCommentsText/>
+      </b:if>
+      <b:if cond='data:post.showManageComments'>
+        <b:include data='post' name='manageComments'/>
+      </b:if>
+    </p>
+
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+  </section>
+</b:includable>
+            <b:includable id='tooltipCss'>
+  <!-- LINT.IfChange -->
+  <style>
+    .post-body a.b-tooltip-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .post-body a.b-tooltip-container .b-tooltip {
+      display: block !important;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-20%, 1px);
+      visibility: hidden;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .post-body a.b-tooltip-container .b-tooltip iframe {
+      width: 200px;
+      height: 198px;
+      max-width: none;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (hover: hover) {
+      .post-body a.b-tooltip-container:hover .b-tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  </style>
+  <!-- LINT.ThenChange(//depot/google3/java/com/google/blogger/b2/layouts/widgets/v2-style.css) -->
+</b:includable>
+          </b:widget>
+        </b:section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- المحرك المطور: إضافة سهم الانتقال وإلغاء الخطوط أسفل الأسماء -->
+  <script>//<![CDATA[
+    document.addEventListener("DOMContentLoaded", function() {
+      var progress = document.getElementById('pjax-progress');
+
+      // 1. بناء وتحديث كرت النشاطات
+      function renderDashboard() {
+        var wrapper = document.getElementById('dashboard-items-wrapper');
+        if (!wrapper) return;
+
+        var endpoint = 'https://layan050.github.io/life-dashboard/activity.json';
+        var cacheKey = 'life-dashboard-activity-v1';
+        var hasCachedActivity = false;
+        function showActivity(data) {
+          var html = '';
+          function esc(value) {
+            return String(value).replace(/[&<>"']/g, function(char) {
+              return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char];
+            });
+          }
+          function row(icon, label, name, badge) {
+            if (!label || !name) return '';
+            return '<div class="dash-row"><div class="dash-right-info">' +
+              '<span class="dash-icon"><i class="' + icon + '"></i></span>' +
+              '<span class="dash-title"><strong>' + esc(label) + ':</strong> ' + esc(name) + '</span>' +
+              '</div>' + (badge ? '<span class="dash-badge-sm">' + esc(badge) + '</span>' : '') + '</div>';
+          }
+          if (data.book && data.book.enabled === true && data.book.name && data.book.progress) {
+            html += row('fas fa-book-open', data.book.label || 'الكتاب', data.book.name, data.book.progress);
+          }
+          if (data.show && data.show.enabled === true && data.show.name && data.show.episode) {
+            html += row('fas fa-tv', data.show.label || 'المسلسل', data.show.name, data.show.episode);
+          }
+          if (data.chess && data.chess.username && Number.isFinite(data.chess.rating)) {
+            html += '<div class="dash-row"><div class="dash-right-info">' +
+              '<span class="dash-icon"><i class="fas fa-chess-knight"></i></span><strong>Chess:</strong>' +
+              '<a href="https://www.chess.com/member/' + encodeURIComponent(data.chess.username) + '" target="_blank" rel="noopener" class="dash-account-link">' + esc(data.chess.username) + ' <i class="fas fa-arrow-up-right-from-square"></i></a>' +
+              '</div><span class="dash-badge-sm">ELO ' + esc(data.chess.rating) + '</span></div>';
+          }
+          if (data.github && data.github.username && data.github.repoName && data.github.repoUrl) {
+            html += '<div class="dash-row"><div class="dash-right-info">' +
+              '<span class="dash-icon"><i class="fab fa-github"></i></span><strong>GitHub:</strong>' +
+              '<a href="https://github.com/' + encodeURIComponent(data.github.username) + '" target="_blank" rel="noopener" class="dash-account-link">' + esc(data.github.username) + ' <i class="fas fa-arrow-up-right-from-square"></i></a>' +
+              '</div><a href="' + esc(data.github.repoUrl) + '" target="_blank" rel="noopener"><span class="dash-badge-sm">' + esc(data.github.repoName) + '</span></a></div>';
+          }
+          wrapper.innerHTML = html || '<div class="dash-row"><span class="dash-text">—</span></div>';
+          var updated = document.getElementById('dashboard-updated-at');
+          if (updated) updated.textContent = data.updatedAt ? 'آخر تحديث: ' + relativeArabic(data.updatedAt) : '';
+        }
+        function relativeArabic(value) {
+          var time = new Date(value).getTime();
+          if (!Number.isFinite(time)) return '—';
+          var seconds = Math.max(0, Math.floor((Date.now() - time) / 1000));
+          if (seconds < 60) return 'الآن';
+          var minutes = Math.floor(seconds / 60);
+          if (minutes < 60) return minutes === 1 ? 'قبل دقيقة' : minutes === 2 ? 'قبل دقيقتين' : 'قبل ' + minutes + ' دقائق';
+          var hours = Math.floor(minutes / 60);
+          if (hours < 24) return hours === 1 ? 'قبل ساعة' : hours === 2 ? 'قبل ساعتين' : 'قبل ' + hours + ' ساعة';
+          var days = Math.floor(hours / 24);
+          if (days < 30) return days === 1 ? 'قبل يوم' : days === 2 ? 'قبل يومين' : 'قبل ' + days + ' أيام';
+          var months = Math.floor(days / 30);
+          return months === 1 ? 'قبل شهر' : months === 2 ? 'قبل شهرين' : 'قبل ' + months + ' أشهر';
+        }
+        try {
+          var cached = localStorage.getItem(cacheKey);
+          if (cached) { showActivity(JSON.parse(cached)); hasCachedActivity = true; }
+        } catch (e) {}
+        fetch(endpoint + '?t=' + Date.now(), { cache: 'no-store' })
+          .then(function(response) {
+            if (!response.ok) throw new Error('تعذّر تحميل النشاطات');
+            return response.json();
+          })
+          .then(function(data) {
+            if (!data || typeof data !== 'object') throw new Error('بيانات النشاط غير صالحة');
+            try { localStorage.setItem(cacheKey, JSON.stringify(data)); } catch (e) {}
+            showActivity(data);
+          })
+          .catch(function() {
+            if (!hasCachedActivity) showActivity({});
+          });
+      }
+
+      // 2. تحديث أزرار التنقل والفلترة
+      function updateActiveStates() {
+        var currentUrl = decodeURIComponent(window.location.href);
+        var currentPath = window.location.pathname;
+
+        document.querySelectorAll('.nav-link, .filter-btn').forEach(function(el) {
+          el.classList.remove('active');
+          var href = decodeURIComponent(el.href);
+          if (currentUrl === href || (el.getAttribute('href') !== '/' && currentUrl.includes(href))) {
+            el.classList.add('active');
+          }
+        });
+
+        if (currentPath === '/' || currentPath === '') {
+          document.querySelectorAll('.nav-link[href="/"], .filter-btn[href="/"]').forEach(function(el) {
+            el.classList.add('active');
+          });
+        }
+      }
+
+      // 2.5 إصلاح زر "الأقدم" بصفحات الأقسام (labels)
+      function fixLabelOlderButton() {
+        var m = window.location.pathname.match(/^\/search\/label\/([^\/?#]+)/);
+        if (!m) return;
+
+        var label = m[1];
+        var pager = document.querySelector('.blog-pager');
+        if (!pager) return;
+
+        var alreadyHasOlder = Array.prototype.some.call(
+          pager.querySelectorAll('a'),
+          function(a){ return a.textContent.indexOf('الأقدم') !== -1; }
+        );
+        if (alreadyHasOlder) return;
+
+        var cardsShown = document.querySelectorAll('.post-card, .post-detail-container').length;
+        var shownSoFar = cardsShown || 6;
+
+        fetch('/feeds/posts/summary/-/' + label + '?alt=json&max-results=1&start-index=' + (shownSoFar + 1))
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            var entries = data.feed && data.feed.entry;
+            if (!entries || !entries.length) return;
+
+            var nextDate = entries[0].published.$t;
+            var olderUrl = '/search/label/' + label + '?updated-max=' + encodeURIComponent(nextDate) + '&max-results=' + shownSoFar;
+
+            var a = document.createElement('a');
+            a.href = olderUrl;
+            a.innerHTML = 'الأقدم <i class="fas fa-arrow-left"></i>';
+            pager.appendChild(a);
+            bindDynamicLinks();
+          })
+          .catch(function(){});
+      }
+
+      // 3. التحميل الديناميكي بدون إنعاش
+      function fetchPage(url, push) {
+        var container = document.getElementById('main-container');
+
+        if (progress) progress.style.width = '35%';
+        if (container) container.classList.add('loading');
+
+        fetch(url)
+          .then(function(response) {
+            if (!response.ok) throw new Error('Failed to load');
+            if (progress) progress.style.width = '75%';
+            return response.text();
+          })
+          .then(function(html) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var newContainer = doc.getElementById('main-container');
+            var newTitle = doc.querySelector('title');
+
+            if (newContainer && container) {
+              var hasContent = newContainer.querySelector('.post-card, .post-detail-container');
+              if (!hasContent) {
+                window.location.href = url;
+                return;
+              }
+
+              container.innerHTML = newContainer.innerHTML;
+              if (newTitle) document.title = newTitle.innerText;
+
+              if (push) {
+                history.pushState({ url: url }, '', url);
+              }
+
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+
+              renderDashboard();
+              updateActiveStates();
+              bindDynamicLinks();
+              fixLabelOlderButton();
+            }
+
+            if (progress) {
+              progress.style.width = '100%';
+              setTimeout(function() { progress.style.width = '0%'; }, 300);
+            }
+            if (container) container.classList.remove('loading');
+          })
+          .catch(function() {
+            window.location.href = url;
+          });
+      }
+
+      // 4. ربط الروابط
+      function bindDynamicLinks() {
+        var links = document.querySelectorAll('.sidebar a, .filters a, .posts-grid a, .blog-pager a');
+        links.forEach(function(link) {
+          if (link.dataset.bound) return;
+          link.dataset.bound = "true";
+
+          link.addEventListener('click', function(e) {
+            var href = link.getAttribute('href');
+            if (href && !href.startsWith('#') && !href.startsWith('javascript:') && link.target !== '_blank') {
+              e.preventDefault();
+              if (decodeURIComponent(window.location.href) !== decodeURIComponent(link.href)) {
+                fetchPage(link.href, true);
+              }
+            }
+          });
+        });
+      }
+
+      window.addEventListener('popstate', function() {
+        fetchPage(window.location.href, false);
+      });
+
+      renderDashboard();
+      updateActiveStates();
+      bindDynamicLinks();
+      fixLabelOlderButton();
+    });
+  //]]></script>
+</body>
+</html>

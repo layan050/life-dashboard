@@ -723,6 +723,7 @@
                 <b:loop values='data:posts' var='post'>
                   <b:include data='post' name='post_detail'/>
                 </b:loop>
+                <b:include name='nextprev'/>
               </b:if>
             </b:includable>
             <b:includable id='aboutPostAuthor'>
@@ -1241,42 +1242,6 @@
         }
       }
 
-      // 2.5 إصلاح زر "الأقدم" بصفحات الأقسام (labels)
-      function fixLabelOlderButton() {
-        var m = window.location.pathname.match(/^\/search\/label\/([^\/?#]+)/);
-        if (!m) return;
-
-        var label = m[1];
-        var pager = document.querySelector('.blog-pager');
-        if (!pager) return;
-
-        var alreadyHasOlder = Array.prototype.some.call(
-          pager.querySelectorAll('a'),
-          function(a){ return a.textContent.indexOf('الأقدم') !== -1; }
-        );
-        if (alreadyHasOlder) return;
-
-        var cardsShown = document.querySelectorAll('.post-card, .post-detail-container').length;
-        var shownSoFar = cardsShown || 6;
-
-        fetch('/feeds/posts/summary/-/' + label + '?alt=json&max-results=1&start-index=' + (shownSoFar + 1))
-          .then(function(r){ return r.json(); })
-          .then(function(data){
-            var entries = data.feed && data.feed.entry;
-            if (!entries || !entries.length) return;
-
-            var nextDate = entries[0].published.$t;
-            var olderUrl = '/search/label/' + label + '?updated-max=' + encodeURIComponent(nextDate) + '&max-results=' + shownSoFar;
-
-            var a = document.createElement('a');
-            a.href = olderUrl;
-            a.innerHTML = 'الأقدم <i class="fas fa-arrow-left"></i>';
-            pager.appendChild(a);
-            bindDynamicLinks();
-          })
-          .catch(function(){});
-      }
-
       // 3. التحميل الديناميكي بدون إنعاش
       function fetchPage(url, push) {
         var container = document.getElementById('main-container');
@@ -1315,7 +1280,6 @@
               renderDashboard();
               updateActiveStates();
               bindDynamicLinks();
-              fixLabelOlderButton();
             }
 
             if (progress) {
@@ -1331,6 +1295,7 @@
 
       // 4. ربط الروابط
       function bindDynamicLinks() {
+        // روابط المقال نفسه تظل تنقلاً عادياً؛ PJAX للقوائم والتنقل فقط.
         var links = document.querySelectorAll('.sidebar a, .filters a, .posts-grid a, .blog-pager a');
         links.forEach(function(link) {
           if (link.dataset.bound) return;
@@ -1355,7 +1320,6 @@
       renderDashboard();
       updateActiveStates();
       bindDynamicLinks();
-      fixLabelOlderButton();
     });
   //]]></script>
 </body>
