@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23 00:19 UTC",
+  "updated_at": "2026-10-23 05:38 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -17,8 +17,8 @@
       "data": {
         "title": "💻 GitHub",
         "category": "النشاط البرمجي",
-        "status_text": "نشاط (PushEvent) في layan050/life-dashboard",
-        "link": "https://github.com/layan050/life-dashboard"
+        "status_text": "نشاط (ReleaseEvent) في layan050/vinylflow",
+        "link": "https://github.com/layan050/vinylflow"
       }
     },
     "substack": {
