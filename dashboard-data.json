@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03 00:18 UTC",
+  "updated_at": "2026-11-03 07:27 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -16,16 +16,14 @@
       "status": "success",
       "data": {
         "title": "💻 GitHub",
-        "status_text": "لا يوجد نشاط برمي حديث"
+        "category": "النشاط البرمجي",
+        "status_text": "نشاط (PushEvent) في layan050/vinylflow",
+        "link": "https://github.com/layan050/vinylflow"
       }
     },
     "substack": {
-      "status": "success",
-      "data": {
-        "title": "📚 Substack",
-        "item_title": "ألف يوم من الضوء: في المعنى العميق لثبات الأمر",
-        "link": "https://hadeelll.substack.com/p/88e"
-      }
+      "status": "error",
+      "message": "Substack profile not found"
     },
     "youtube": {
       "status": "success",
