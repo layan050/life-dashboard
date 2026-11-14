@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14 00:05 UTC",
+  "updated_at": "2026-11-14 07:16 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -16,7 +16,9 @@
       "status": "success",
       "data": {
         "title": "💻 GitHub",
-        "status_text": "لا يوجد نشاط برمي حديث"
+        "category": "النشاط البرمجي",
+        "status_text": "نشاط (PushEvent) في layan050/vinylflow",
+        "link": "https://github.com/layan050/vinylflow"
       }
     },
     "substack": {
