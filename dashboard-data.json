@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26 10:18 UTC",
+  "updated_at": "2026-11-26 19:56 UTC",
   "widgets": {
     "chess": {
       "status": "success",
@@ -20,12 +20,8 @@
       }
     },
     "substack": {
-      "status": "success",
-      "data": {
-        "title": "📚 Substack",
-        "item_title": "ألف يوم من الضوء: في المعنى العميق لثبات الأمر",
-        "link": "https://hadeelll.substack.com/p/88e"
-      }
+      "status": "error",
+      "message": "Substack profile not found"
     },
     "youtube": {
       "status": "success",
